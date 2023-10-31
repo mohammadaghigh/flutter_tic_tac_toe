@@ -56,38 +56,41 @@ class _HomeState extends State<Home> {
   }
 
   Widget getGridView() {
-    return Expanded(
-      child: GridView.builder(
-        itemCount: 9,
-        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-        ),
-        itemBuilder: (BuildContext context, int index) {
-          return GestureDetector(
-            onTap: () {
-              tapped(index);
-            },
-            child: Container(
-              width: 100.0,
-              height: 100.0,
-              margin: EdgeInsets.all(8),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                shape: BoxShape.rectangle,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Center(
-                child: Text(
-                  xOrOList[index],
-                  style: TextStyle(
-                    color: xOrOList[index] == 'O' ? Colors.blue : Colors.red,
-                    fontSize: 60.0,
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Expanded(
+        child: GridView.builder(
+          itemCount: 9,
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+          ),
+          itemBuilder: (BuildContext context, int index) {
+            return GestureDetector(
+              onTap: () {
+                tapped(index);
+              },
+              child: Container(
+                width: 100.0,
+                height: 100.0,
+                margin: EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.rectangle,
+                  borderRadius: BorderRadius.circular(30),
+                ),
+                child: Center(
+                  child: Text(
+                    xOrOList[index],
+                    style: TextStyle(
+                      color: xOrOList[index] == 'O' ? Colors.blue : Colors.red,
+                      fontSize: 60.0,
+                    ),
                   ),
                 ),
               ),
-            ),
-          );
-        },
+            );
+          },
+        ),
       ),
     );
   }
@@ -199,12 +202,15 @@ class _HomeState extends State<Home> {
   }
 
   Widget getTurn(bool turn) {
-    return Text(
-      turn ? 'Turn O' : 'Turn X',
-      style: TextStyle(
-        color: Colors.white,
-        fontSize: 25.0,
-        fontWeight: FontWeight.bold,
+    return Padding(
+      padding: const EdgeInsets.all(10.0),
+      child: Text(
+        turn ? 'Turn O' : 'Turn X',
+        style: TextStyle(
+          color: Colors.white,
+          fontSize: 25.0,
+          fontWeight: FontWeight.bold,
+        ),
       ),
     );
   }
